@@ -1,0 +1,74 @@
+@import "compass/css3";
+@import "bourbon";
+@import url(https://fonts.googleapis.com/css?family=Open+Sans+Condensed:700);
+
+body,html{
+  height:100%;
+  width:100%;
+  position:relative;
+  background-color:#000;
+}
+
+.glitch{
+  color:#000;
+  font-size:60px;
+  position:absolute;
+  margin:0 auto;
+  text-align:center;
+  font-family:'Open Sans Condensed';
+  text-transform:uppercase;
+  width:700px;
+  @include position(absolute, 50% auto auto 50%);
+  @include transform(translateX(-50%) translateY(-50%));
+}
+
+h1{
+  background: url(https://cl.ly/image/3S0x440w3g2H/glitch.gif);
+  -webkit-text-fill-color: transparent;
+  text-fill-color: transparent;
+  -webkit-background-clip: text;
+  background-clip: text;
+
+}
+
+@keyframes noise-anim{
+  $steps:20;
+  @for $i from 0 through $steps{
+    #{percentage($i*(1/$steps))}{
+      clip:rect(random(300)+px,9999px,random(300)+px,0);
+    }
+  }
+}
+.glitch:after{
+  content:attr(data-text);
+  position:absolute;
+  left:4px;
+  text-shadow:-2px 0 #fff;
+  top:0;
+  color:white;
+  background:transparent;
+  overflow:hidden;
+  clip:rect(0,900px,0,0); 
+  animation:noise-anim 2s infinite linear alternate-reverse;
+}
+
+@keyframes noise-anim-2{
+  $steps:20;
+  @for $i from 0 through $steps{
+    #{percentage($i*(1/$steps))}{
+      clip:rect(random(300)+px,9999px,random(300)+px,0);
+    }
+  }
+}
+.glitch:before{
+  content:attr(data-text);
+  position:absolute;
+  left:-4px;
+  text-shadow:3px 0 white; 
+  top:0;
+  color:white;
+  background:black;
+  overflow:hidden;
+  clip:rect(0,900px,0,0); 
+  animation:noise-anim-2 3s infinite linear alternate-reverse;
+}
