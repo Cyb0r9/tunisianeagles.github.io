@@ -1,185 +1,83 @@
-
-
-<!DOCTYPE html>
-<html lang="en" >
-
-<head>
-
-  <meta charset="UTF-8">
-  <title>Tunisian Eagles</title>
-  <link href='https://fonts.googleapis.com/css?family=Share+Tech+Mono' rel='stylesheet' type='text/css'>
-  
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
-
-  
-      <style>
-      @-webkit-keyframes blink {
-  50% {
-    opacity: 1;
-  }
-  100% {
-    opacity: 0;
-  }
-}
-@keyframes blink {
-  50% {
-    opacity: 1;
-  }
-  100% {
-    opacity: 0;
-  }
-}
-body {
-  background-color: #151515;
-  color: #eee;
-  font-family: 'Share Tech Mono', monospace;
-  -webkit-user-select: none;
-     -moz-user-select: none;
-      -ms-user-select: none;
-          user-select: none;
-}
-
-.hidden {
-  display: none;
-}
-
-.password {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  -webkit-transform: translate(-50%, -50%);
-          transform: translate(-50%, -50%);
-  font-size: 60px;
-  letter-spacing: 5px;
-  text-transform: uppercase;
-}
-
-.granted {
-  position: absolute;
-  top: 75%;
-  left: 50%;
-  -webkit-transform: translate(-50%, -50%);
-          transform: translate(-50%, -50%);
-  font-size: 30px;
-}
-
-.info {
-  position: absolute;
-  top: 0;
-  left: 0;
-}
-.info p {
-  margin: 10px;
-}
-
-.button {
-  background-color: #111;
-  border: solid 1px #888;
-  padding: 8px 25px;
-  font-size: 26px;
-  letter-spacing: 2px;
-  cursor: pointer;
-}
-
-.rerun {
-  position: absolute;
-  bottom: 15px;
-  right: 15px;
-}
-
-.start {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  -webkit-transform: translate(-50%, -50%);
-          transform: translate(-50%, -50%);
-}
-
-.blink {
-  -webkit-animation: blink 0.8s steps(1, start) infinite alternate;
-          animation: blink 0.8s steps(1, start) infinite alternate;
-}
-
-    </style>
-
-  
-  
-  
-  
-
-</head>
-
-<body translate="no" >
-
-  <div class="info">
-	<p>You've accessed the mainframe using a double-handshake attack on the firewall,<br>you need to brute-force the password...</p>
-	<p class="hidden">Press any button to Crack Tunisian Eagles Password : <span class="blink">_</span></p>
-</div>
-<div class="password hidden"></div>
-<div class="button start">START HACKING!</div>
-<div class="blink granted hidden">ACCESS GRANTED!</div>
-<div class=" button rerun hidden">RERUN</div>
-  
-  <script src='//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
-
-  
-
-    <script >
-      var passwords = ['Belahsan Ouerghi', 'Tunisian Eagles', 'admin2018', 'trustno1', 'letmein6969', '5a5qqq2s3d6*f0fttg21v'];
-var indexOld;
-var index = Math.floor((Math.random() * passwords.length));
-var password = passwords[index];
-var characters = [];
-var counter = 0;
-	
-var interval = setInterval(function(){
-		for(i = 0; i < counter; i++) {
-			characters[i] = password.charAt(i);
-		}
-		for(i = counter; i < password.length; i++) {
-			characters[i] = Math.random().toString(36).charAt(2);
-		}
-		$('.password').text(characters.join(''));
-	}, 25);
-	
-
-function hack() {
-	counter++;
-	if(counter == password.length){
-		$('.granted, .rerun').removeClass('hidden');
+<style type="text/css">
+	html {
+  		text-align: center;
+  		background: url("Binary-Code.gif");
+  		background-size: 65%;
 	}
-}
-$(window).on('keydown', hack);
-$('.password').on('click', hack);
+	.frame{
+		background-color: black;
+		border: 5px solid green;
+		width: 25%;
+		margin-left: 35%;
+		margin-top: 2%;
+		padding: 25px;
+		text-align: center;
+	}
+	.title{
+		font-family: "Arial Black", Gadget, sans-serif;
+		color: green;
+	}
+	.txt1{
+		font-family: Courier New;
+		font-size: 20px;
+		color: white;
+		margin-top: 50px;
+	}
+	.link_holder{
+		margin-top: 20px;
+	}
+	.link{
+		margin-top: 2px;
+		color: white;
+		font-size: 20px;
+	}
+	a{
+		font-family: "Courier New", Courier, monospace;
+		color: white;
+	}
+	.txt2{
+		margin-top: 50px;
+		font-family: "Courier New", Courier, monospace;
+		font-size: 30px;
+		color: white;
+	}
+	.txt3{
+		margin-top: 50px;
+		font-family: "Courier New", Courier, monospace;
+		font-size: 18px;
+		color: white;
+	}
+	span{
+		color: red;
+	}
 
+</style>
 
-$('.rerun').on('click', function() {
-	//prevent from displaying the same password two times in a row
-	indexOld = index; 
-	do {
-		index = Math.floor((Math.random() * passwords.length));
-	} while(index == indexOld);
-	
-	$('.granted, .rerun').addClass('hidden');
-	password = passwords[index];
-	characters = [];
-	counter = 0;
-});
-
-//keyboard events won't fire if the iframe isn't selected first in Full Page view
-$('.start').on('click', function() {
-	$(this).addClass('hidden');
-	$('.info p:last-child, .password').removeClass('hidden');
-});
-    </script>
-
-
-
-  
-  
-
-  <script src="https://static.codepen.io/assets/editor/live/css_reload-2a5c7ad0fe826f66e054c6020c99c1e1c63210256b6ba07eb41d7a4cb0d0adab.js"></script>
+<html>
+<body>
+	<div class="frame">
+		<h1 class="title">
+		Hello World !!!
+		</h1>
+		<div class="txt1">
+			We are community of Open Source and IT Security Researchers, You Can Call us Tunisian Eagles
+		</div>
+		<div class="link_holder">
+		<div class="link"><span>Github : </span>
+		<br><a href="https://www.github.com/TunisianEagles">github.com/TunisianEagles</a>
+		</div>
+		<div class="link"><span>Email : </span>
+		<br><a>TunisianEagles@protonmail.com</a>
+		</div>
+		<div class="link"><span>Facebook : </span>
+		<br><a href="https://www.facebook.com/ouerghi.belahsan">www.facebook.com/tunisianeagles/</a>
+		</div>
+		<div class="link"><span>Youtube Channel : </span>
+		<br><a href="https://www.youtube.com/channel/UCv9HdZbTOo0iBG5X2qaqmqg">https://www.youtube.com/channel/UCv9HdZbTOo0iBG5X2qaqmqg</a>
+		</div>
+		</div>
+		<div class="txt2">"The quieter you become, the more you are able to hear."</div>
+		<div class="txt3">Have fun in our zone <span>:)</span></div>
+	</div>
 </body>
-
 </html>
- 
